@@ -1,0 +1,22 @@
+{
+  "name": "async-comparison",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "with-async-await": "./node_modules/.bin/babel-node --experimental --optional bluebirdCoroutines index-with-async-await.js",
+    "with-callbacks": "./node_modules/.bin/babel-node index-with-callbacks.js",
+    "with-auto": "./node_modules/.bin/babel-node index-with-auto.js",
+    "with-promises": "./node_modules/.bin/babel-node index-with-promises.js",
+    "with-highland": "./node_modules/.bin/babel-node index-with-highland.js"
+  },
+  "author": "",
+  "license": "WTFPL",
+  "dependencies": {
+    "async": "^0.9.0",
+    "babel": "^4.7.16",
+    "bluebird": "^2.9.14",
+    "highland": "^2.4.0",
+    "mongodb": "^1.4.34"
+  }
+}
