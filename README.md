@@ -15,3 +15,9 @@ Simple use case implemented with different strategies.
 - use `highland.js` streams
 - use Bluebird's Promises
 - use Babel's async/await with Bluebird Coroutines
+
+### Running
+
+```
+> npm run with-(callbacks|auto|highland|promises|async-await)
+```
