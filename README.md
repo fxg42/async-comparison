@@ -12,7 +12,7 @@ Simple use case implemented with different strategies.
 
 - use Node callbacks
 - use Async's `auto` function
-- use `highland.js` streams
+- use Highland streams
 - use Bluebird's Promises
 - use Babel's async/await with Bluebird Coroutines
 
