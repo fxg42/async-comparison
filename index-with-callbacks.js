@@ -2,7 +2,7 @@ import MongoDB from 'mongodb'
 
 function findEveryone(db, callback) {
   const people = db.collection('people')
-  const everyone = people.find().toArray((err, everyone) => {
+  people.find().toArray((err, everyone) => {
     if (err) {
       callback(err)
     } else {
