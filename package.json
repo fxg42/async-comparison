@@ -9,6 +9,7 @@
     "with-auto": "./node_modules/.bin/babel-node index-with-auto.js",
     "with-promises": "./node_modules/.bin/babel-node index-with-promises.js",
     "with-highland": "./node_modules/.bin/babel-node index-with-highland.js"
+    "with-highland-and-promise":"./node_modules/.bin/babel-node index-with-highland-and-promise.js"
   },
   "author": "",
   "license": "WTFPL",
