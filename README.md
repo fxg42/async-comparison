@@ -11,13 +11,14 @@ Simple use case implemented with different strategies.
 ### Strategies
 
 - use Node callbacks
+- use Async's `waterfall` function
 - use Async's `auto` function
 - use Highland streams
-- use Bluebird's Promises
+- use Bluebird Promises
 - use Babel's async/await with Bluebird Coroutines
 
 ### Running
 
 ```
-> npm run with-(callbacks|auto|highland|promises|async-await)
+> npm run with-(callbacks|waterfall|auto|highland|promises|async-await)
 ```

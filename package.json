@@ -7,6 +7,7 @@
     "with-async-await": "./node_modules/.bin/babel-node --experimental --optional bluebirdCoroutines index-with-async-await.js",
     "with-callbacks": "./node_modules/.bin/babel-node index-with-callbacks.js",
     "with-auto": "./node_modules/.bin/babel-node index-with-auto.js",
+    "with-waterfall": "./node_modules/.bin/babel-node index-with-waterfall.js",
     "with-promises": "./node_modules/.bin/babel-node index-with-promises.js",
     "with-highland": "./node_modules/.bin/babel-node index-with-highland.js"
   },
