@@ -1,22 +1,25 @@
 import _ from 'highland'
 import MongoDB from 'mongodb'
+import Promise from 'bluebird'
+Promise.promisifyAll(MongoDB)
 
-let connection
-
-_.wrapCallback(MongoDB.MongoClient.connect)('mongodb://localhost/test')
-.map((db) => {
-  connection = db
-  const people = db.collection('people')
-  return _(people.find().stream()).pluck('name')
+function getConnection() {
+  return MongoDB.MongoClient.connectAsync('mongodb://localhost/test').disposer((db) => {
+    db.close()
+  })
+}
+_.(getConnection())
+.map((db) => { db.collection('people')
+.flatMap((peopleColl) => { 
+  return _(peopleColl.find().stream())})
+.map((person) => { 
+  return person.name
 })
-.merge()
 .collect()
-.doto((everyone) => {
+.doto((everyone) => { 
   console.log(everyone)
 })
-.stopOnError((err, push) => {
+.stopOnError((err) => {
   console.log('Something went wrong', err)
 })
-.apply(() => {
-  connection && connection.close()
-})
+
