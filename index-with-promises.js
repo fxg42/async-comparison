@@ -11,13 +11,10 @@ function getConnection() {
 Promise.using(getConnection(), (db) => {
   const people = db.collection('people')
   return people.find().toArrayAsync()
-})
-.then((everyone) => {
+}).then((everyone) => {
   return everyone.map( x => x.name )
-})
-.then((everyone) => {
+}).then((everyone) => {
   console.log(everyone)
-})
-.catch((e) => {
+}).catch((e) => {
   console.log('Something went wrong', e)
 })
