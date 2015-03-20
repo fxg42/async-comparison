@@ -22,7 +22,7 @@ const tasks = {
 }
 async.auto(tasks, (err, {db, everyone}) => {
   if (err) {
-    console.log('Something went wrong', e)
+    console.log('Something went wrong', err)
   } else {
     console.log(everyone)
   }
