@@ -17,7 +17,7 @@ MongoDB.MongoClient.connect('mongodb://localhost/test', (err, db) => {
   } else {
     findEveryone(db, (err, everyone) => {
       if (err) {
-        console.log('Something went wrong', e)
+        console.log('Something went wrong', err)
       } else {
         console.log(everyone)
       }
