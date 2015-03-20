@@ -13,12 +13,11 @@ Simple use case implemented with different strategies.
 - use Node callbacks
 - use Async's `auto` function
 - use Highland streams
-- use Highland stream started on a promise
 - use Bluebird's Promises
 - use Babel's async/await with Bluebird Coroutines
 
 ### Running
 
 ```
-> npm run with-(callbacks|auto|highland|highland-and-promise|promises|async-await)
+> npm run with-(callbacks|auto|highland|promises|async-await)
 ```
