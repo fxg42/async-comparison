@@ -9,8 +9,9 @@ async function findEveryone(db) {
 }
 
 (async function run() {
+  let db
   try {
-    var db = await MongoDB.MongoClient.connectAsync('mongodb://localhost/test')
+    db = await MongoDB.MongoClient.connectAsync('mongodb://localhost/test')
     const everyone = await findEveryone(db)
     console.log(everyone)
   } catch (e) {
