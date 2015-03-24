@@ -2,33 +2,34 @@ import csp from "js-csp"
 
 import MongoDB from 'mongodb'
 
-let connection
+function cspFromCb(fn){
+    var args = 2 <= arguments.length ? Array.prototype.slice.call(arguments, 1) : [];
+    var chan = csp.chan();
 
+    args.push(function(err, value) {
+        csp.putAsync(chan, err ? err : value, (()=> chan.close()));
+    });
+
+    fn.apply(this, args);
+
+    return chan;
+}
+function cspValue(v){
+  var chan = csp.chan();
+  csp.putAsync(chan, v, (()=> chan.close()));
+  return chan;
+}
 
 function connect() {
-  var ch = csp.chan();
-  
-  MongoDB.MongoClient.connect('mongodb://localhost/test',function(err, db){
-    if(err){
-      csp.putAsync(ch, new Error(err))
-    }else{
-      csp.putAsync(ch, db);
-    }
-  });
-  return ch;
+  return cspFromCb(MongoDB.MongoClient.connect, 'mongodb://localhost/test' )
 }
 function findEveryone(db) {
-  var ch = csp.chan();
-  db.collection('people').find().toArray(function (err, ps){
-    csp.putAsync(ch, ps);  
-  })
-  return ch;
+  var ctx = db.collection('people').find()
+  return cspFromCb.bind(ctx)(ctx.toArray)
 }
 
 function extractPersonName(everyone){
-  var ch = csp.chan();
-  csp.putAsync(ch, everyone.map( x => x.name ));
-  return ch;
+  return cspValue(everyone.map( (x => x.name )))
 }
 csp.go(function*(){
   let conn
@@ -38,7 +39,7 @@ csp.go(function*(){
     const everyoneName = yield extractPersonName(everyone);
     console.log(everyoneName);
   }catch(e){
-    console.error(e);
+    console.error("ERROR", e);
   }finally{
     conn.close()
   }
