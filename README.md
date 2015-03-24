@@ -16,9 +16,10 @@ Simple use case implemented with different strategies.
 - use Highland streams
 - use Bluebird Promises
 - use Babel's async/await with Bluebird Coroutines
+- use js-csp js implementation of Tony Hoar's CSP (Channel sequential processing)
 
 ### Running
 
 ```
-> npm run with-(callbacks|waterfall|auto|highland|promises|async-await)
+> npm run with-(callbacks|waterfall|auto|highland|promises|async-await|csp)
 ```
