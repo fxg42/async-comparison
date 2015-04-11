@@ -10,18 +10,17 @@ function connect(callback) {
 function findEveryone(db, callback) {
   connection = db
   const people = db.collection('people')
-  people.find().toArray((err, everyone) => {
-    if (err) {
-      callback(err)
-    } else {
-      callback(null, everyone.map( x => x.name ))
-    }
-  })
+  people.find().toArray(callback)
+}
+
+function extractPersonName(everyone, callback){
+  callback(null, everyone.map( x => x.name ))
 }
 
 async.waterfall([
   connect,
-  findEveryone
+  findEveryone,
+  extractPersonName
 ], (err, everyone) => {
   if (err) {
     console.log('Something went wrong', err)

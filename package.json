@@ -9,7 +9,8 @@
     "with-auto": "./node_modules/.bin/babel-node index-with-auto.js",
     "with-waterfall": "./node_modules/.bin/babel-node index-with-waterfall.js",
     "with-promises": "./node_modules/.bin/babel-node index-with-promises.js",
-    "with-highland": "./node_modules/.bin/babel-node index-with-highland.js"
+    "with-highland": "./node_modules/.bin/babel-node index-with-highland.js",
+    "with-csp": "./node_modules/.bin/babel-node  index-with-csp.js"
   },
   "author": "",
   "license": "WTFPL",
@@ -18,6 +19,7 @@
     "babel": "^4.7.16",
     "bluebird": "^2.9.14",
     "highland": "^2.4.0",
+    "js-csp": "^0.3.4",
     "mongodb": "^1.4.34"
   }
 }
